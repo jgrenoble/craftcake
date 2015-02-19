@@ -1,0 +1,2 @@
+# EULA agreement is assumed if you are using craftcake :)
+eula=true

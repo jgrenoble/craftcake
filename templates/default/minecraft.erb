@@ -1,0 +1,59 @@
+#!/bin/sh
+SERVICE_NAME=Minecraft-Server
+PATH_TO_JAR=/var/minecraft/minecraft_server.jar
+PID_PATH_NAME=/tmp/minecraft-pid
+case $1 in
+    start)
+        echo "Starting $SERVICE_NAME ..."
+        if [ ! -f $PID_PATH_NAME ]; then
+            cd /var/minecraft
+            pwd
+            nohup java -Xmx512M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null >> /var/minecraft/service.log &
+                        echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+            exit 0
+        else
+            echo "$SERVICE_NAME is already running ..."
+            exit 0
+        fi
+    ;;
+    stop)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stoping ..."
+            kill $PID;
+            echo "$SERVICE_NAME stopped ..."
+            rm $PID_PATH_NAME
+            exit 0
+        else
+            echo "$SERVICE_NAME is not running ..."
+            exit 7
+        fi
+    ;;
+    restart)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stopping ...";
+            kill $PID;
+            echo "$SERVICE_NAME stopped ...";
+            rm $PID_PATH_NAME
+            echo "$SERVICE_NAME starting ..."
+            cd /var/minecraft && nohup java -Xmx512M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null >> /var/minecraft/service.log &
+                        echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+            exit 0
+        else
+            echo "$SERVICE_NAME is not running ..."
+            exit 7
+        fi
+    ;;
+    status)
+        if [ -f $PID_PATH_NAME ]; then
+            echo "$SERVICE_NAME (pid $(cat $PID_PATH_NAME)) is running..."
+            exit 0
+        else
+            echo "$SERVICE_NAME is stopped"
+            exit 7
+        fi
+    ;;
+esac 
