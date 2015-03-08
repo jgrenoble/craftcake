@@ -8,7 +8,7 @@ case $1 in
         if [ ! -f $PID_PATH_NAME ]; then
             cd /var/minecraft
             pwd
-            nohup java -Xmx512M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null >> /var/minecraft/service.log &
+            nohup java -Xmx768M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null >> /var/minecraft/service.log &
                         echo $! > $PID_PATH_NAME
             echo "$SERVICE_NAME started ..."
             exit 0
@@ -38,7 +38,7 @@ case $1 in
             echo "$SERVICE_NAME stopped ...";
             rm $PID_PATH_NAME
             echo "$SERVICE_NAME starting ..."
-            cd /var/minecraft && nohup java -Xmx512M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null >> /var/minecraft/service.log &
+            cd /var/minecraft && nohup java -Xmx768M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null >> /var/minecraft/service.log &
                         echo $! > $PID_PATH_NAME
             echo "$SERVICE_NAME started ..."
             exit 0
