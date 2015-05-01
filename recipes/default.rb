@@ -32,7 +32,7 @@ directory "/var/minecraft" do
 end
 
 remote_file "/var/minecraft/minecraft_server.jar" do
-  source "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.3/minecraft_server.1.8.3.jar"
+  source "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.3/minecraft_server.1.8.4.jar"
   mode '0755'
 end
 
@@ -49,5 +49,3 @@ end
 service 'minecraft' do
   action :start
 end
-
-# nohup java -Xmx512M -Xms256M -jar /var/minecraft/minecraft_servgui /tmp 2>> /dev/null >> /dev/null & echo $! > /tmp/minecraft-pid
