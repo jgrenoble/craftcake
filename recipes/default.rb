@@ -55,6 +55,6 @@ service 'minecraft' do
 end
 
 cron 'chef-client-job' do
-  minute '30'
+  minute '0,30'
   command %w{chef-client >> /var/log/chef-client.log}.join(' ')
 end
