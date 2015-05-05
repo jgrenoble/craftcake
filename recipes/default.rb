@@ -24,6 +24,10 @@ package 'screen' do
   action :install
 end
 
+package 'crontabs' do
+  action :install
+end
+
 directory "/var/minecraft" do
   owner 'root'
   group 'root'
@@ -48,4 +52,9 @@ end
 
 service 'minecraft' do
   action :start
+end
+
+cron 'chef-client-job' do
+  minute '30'
+  command %w{chef-client >> /var/log/chef-client.log}.join(' ')
 end
