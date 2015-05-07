@@ -1,5 +1,6 @@
 #!/bin/sh
-PID=`/bin/ps fu $USER| grep "minecraft_server.jar" | grep -v "grep" | awk '{print $2}'`
+
+PID=`/bin/ps -ef | grep "java" | grep -v "grep" | awk '{print $2}'`
 SERVICE_NAME=Minecraft-Server
 PATH_TO_JAR=/var/minecraft/minecraft_server.jar
 

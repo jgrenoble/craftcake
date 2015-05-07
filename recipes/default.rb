@@ -28,6 +28,10 @@ package 'crontabs' do
   action :install
 end
 
+service 'crond' do
+  action :start
+end
+
 directory "/var/minecraft" do
   owner 'root'
   group 'root'
