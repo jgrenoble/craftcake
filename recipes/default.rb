@@ -71,7 +71,8 @@ ruby_block "sleep" do
   block do
     sleep(30)
   end
-  action :run
+  supports :run => true
+  action :nothing
 end
 
 cron 'chef-client-job' do
