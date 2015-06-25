@@ -42,6 +42,7 @@ end
 remote_file "/var/minecraft/minecraft_server.jar" do
   source "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.7/minecraft_server.1.8.7.jar"
   mode '0755'
+  notifies :restart, 'service[minecraft]', :delayed
 end
 
 cookbook_file '/var/minecraft/eula.txt' do
@@ -57,9 +58,11 @@ end
 template "/etc/init.d/minecraft" do
   source "minecraft.erb"
   mode '0755'
+  notifies :restart, 'service[minecraft]', :delayed
 end
 
 service 'minecraft' do
+  supports :restart => true
   action :start
 end
 
