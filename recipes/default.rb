@@ -49,6 +49,11 @@ cookbook_file '/var/minecraft/eula.txt' do
   mode '0755'
 end
 
+cookbook_file '/var/minecraft/ops.json' do
+  source 'ops.json'
+  mode '0755'
+end
+
 template "/etc/init.d/minecraft" do
   source "minecraft.erb"
   mode '0755'
