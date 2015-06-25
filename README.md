@@ -1,4 +1,4 @@
-craftcake Cookbook
+Craftcake Cookbook
 ==================
 TODO: Craftcake is a minecraft server cookbook to get you up and running with a minecraft server using chef.
 
@@ -37,7 +37,10 @@ e.g.
 Usage
 -----
 #### craftcake::default
-TODO: Write usage instructions for each cookbook.
+TODO: move ops.json to template and databag items
+TODO: externalize some parameters
+TODO: remove some unused resources and packages
+TODO: cleanup this file :)
 
 e.g.
 Just include `craftcake` in your node's `run_list`:
@@ -65,4 +68,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: Jesse Grenoble
+Authors: jgrenoble
