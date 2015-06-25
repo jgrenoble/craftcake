@@ -43,6 +43,7 @@ remote_file "/var/minecraft/minecraft_server.jar" do
   source "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.7/minecraft_server.1.8.7.jar"
   mode '0755'
   notifies :restart, 'service[minecraft]', :delayed
+  notifies :run, 'ruby_block[sleep]', :immediately
 end
 
 cookbook_file '/var/minecraft/eula.txt' do
@@ -64,6 +65,13 @@ end
 service 'minecraft' do
   supports :restart => true
   action :start
+end
+
+ruby_block "sleep" do
+  block do
+    sleep(30)
+  end
+  action :run
 end
 
 cron 'chef-client-job' do
