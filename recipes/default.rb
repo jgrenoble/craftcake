@@ -40,7 +40,7 @@ directory "/var/minecraft" do
 end
 
 remote_file "/var/minecraft/minecraft_server.jar" do
-  source "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.4/minecraft_server.1.8.4.jar"
+  source "https://s3.amazonaws.com/Minecraft.Download/versions/1.8.7/minecraft_server.1.8.7.jar"
   mode '0755'
 end
 
