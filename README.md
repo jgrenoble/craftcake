@@ -53,6 +53,21 @@ Just include `craftcake` in your node's `run_list`:
   ]
 }
 ```
+Add ops via your override attributes
+```json
+{
+  "craftcake": {
+    "ops": [
+      {
+        "uuid": "11111111-1111-1111-1111-111111111111",
+        "name": "opsdude",
+        "level": 4,
+        "bypassesPlayerLimit": false
+      }
+    ]
+  }
+}
+```
 
 Contributing
 ------------
