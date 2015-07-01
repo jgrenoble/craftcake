@@ -7,29 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
-package 'httpd' do
-	action :remove
-end
-
-package 'sendmail' do
-	action :remove
-end
-
 package 'java' do
   package_name 'java-1.8.0-openjdk'
   action :install
-end
-
-package 'screen' do
-  action :install
-end
-
-package 'crontabs' do
-  action :install
-end
-
-service 'crond' do
-  action :start
 end
 
 directory "/var/minecraft" do
@@ -51,9 +31,12 @@ cookbook_file '/var/minecraft/eula.txt' do
   mode '0755'
 end
 
-cookbook_file '/var/minecraft/ops.json' do
-  source 'ops.json'
+template "/var/minecraft/ops.json" do
+  source 'ops.json.erb'
   mode '0755'
+  variables :ops_settings => node['craftcake']['ops']
+  action :create
+  notifies :restart, 'service[minecraft]', :delayed
 end
 
 template "/etc/init.d/minecraft" do
@@ -73,9 +56,4 @@ ruby_block "sleep" do
   end
   supports :run => true
   action :nothing
-end
-
-cron 'chef-client-job' do
-  minute '0,30'
-  command %w{chef-client >> /var/log/chef-client.log}.join(' ')
 end
