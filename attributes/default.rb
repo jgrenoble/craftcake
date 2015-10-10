@@ -1,4 +1,24 @@
+#
+# Cookbook Name:: craftcake
+# attributes:: default
+#
+# Copyright 2015, yellowfive.com
+#
 
+default['craftcake']['minecraft']['version'] = "1.8.7"
+default['craftcake']['minecraft']['jar'] = "minecraft_server.jar"
+
+default['craftcake']['java']['version'] = "1.8.0"
+
+default['craftcake']['directory'] = "/var/minecraft"
+
+# minecraft server login notifier settings
+default['craftcake']['notify']['to_address'] = "root@#{domain}"
+default['craftcake']['notify']['from_address'] = "#{hostname}@#{domain}"
+default['craftcake']['notify']['subject'] = "Minecraft Server Login"
+default['craftcake']['notify']['log_file'] = "#{node['craftcake']['directory']}/nohup.out"
+
+# default mods for the server (you'll want to change this)
 default['craftcake']['ops'] = [
   {
     "uuid" => "120aaa19-a7fc-4c86-9712-7dfa3a4711b3",

@@ -3,9 +3,13 @@ craftcake CHANGELOG
 
 This file is used to list changes made in each version of the craftcake cookbook.
 
+0.1.8
+-----
+Support for forge mods
+
 0.1.0
 -----
-- Jesse Grenoble - Initial release of craftcake
+Initial release of craftcake
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

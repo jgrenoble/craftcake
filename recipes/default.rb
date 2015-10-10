@@ -4,11 +4,9 @@
 #
 # Copyright 2015, yellowfive.com
 #
-# All rights reserved - Do Not Redistribute
-#
 
 package 'java' do
-  package_name 'java-1.8.0-openjdk'
+  package_name 'java-#{node['craftcake']['java']['version']}-openjdk'
   action :install
 end
 
@@ -50,10 +48,9 @@ service 'minecraft' do
   action :start
 end
 
-ruby_block "sleep" do
-  block do
-    sleep(30)
-  end
-  supports :run => true
-  action :nothing
-end
+#TODO: install python 1.7
+#TODO: install pygtail from git
+#TODO: install crond and start
+
+#TODO: login notifications
+# */5 * * * * /usr/bin/python /var/minecraft_notify.py
