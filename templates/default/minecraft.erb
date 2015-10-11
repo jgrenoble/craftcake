@@ -10,7 +10,7 @@ case $1 in
         if [ -z "$PID" ]; then
             echo "pid does not exist, starting server..."
             cd /var/minecraft
-            nohup java -Xmx768M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null &
+            nohup java -Xmx512M -Xms128M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null &
             echo "$SERVICE_NAME started ..."
             exit 0
         else
@@ -35,7 +35,7 @@ case $1 in
             kill $PID;
             echo "$SERVICE_NAME stopped ...";
             echo "$SERVICE_NAME starting ..."
-            cd /var/minecraft && nohup java -Xmx768M -Xms256M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null &
+            cd /var/minecraft && nohup java -Xmx512M -Xms128M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null &
             echo "$SERVICE_NAME started ..."
             exit 0
         else
