@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: craftcake
-# Recipe:: vanilla
+# Recipe:: notifier
 #
 # Copyright 2015, yellowfive.com
 #
@@ -29,12 +29,10 @@ template "#{node[:craftcake][:directory]}/notify.sh" do
   mode '0755'
 end
 
-
 # run the script every 5 mins
 cron 'notify.sh' do
   minute '*/5'
+  environment ({"PATH" => "/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin"})
   command "#{node[:craftcake][:directory]}/notify.sh"
   user 'root'
 end
-
-# */5 * * * * /usr/bin/python /var/minecraft_notify.py

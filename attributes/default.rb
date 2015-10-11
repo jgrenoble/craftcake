@@ -8,7 +8,7 @@
 default['craftcake']['minecraft']['version'] = "1.8.8"
 default['craftcake']['minecraft']['jar'] = "minecraft_server.jar"
 
-default['craftcake']['java']['version'] = "1.7.0"
+default['craftcake']['java']['version'] = "1.8.0"
 
 default['craftcake']['directory'] = "/var/minecraft"
 
