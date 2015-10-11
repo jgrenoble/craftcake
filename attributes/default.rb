@@ -5,14 +5,15 @@
 # Copyright 2015, yellowfive.com
 #
 
-default['craftcake']['minecraft']['version'] = "1.8.7"
+default['craftcake']['minecraft']['version'] = "1.8.8"
 default['craftcake']['minecraft']['jar'] = "minecraft_server.jar"
 
-default['craftcake']['java']['version'] = "1.8.0"
+default['craftcake']['java']['version'] = "1.7.0"
 
 default['craftcake']['directory'] = "/var/minecraft"
 
 # minecraft server login notifier settings
+default['craftcake']['notify_on_login'] = "true"
 default['craftcake']['notify']['to_address'] = "root@#{domain}"
 default['craftcake']['notify']['from_address'] = "#{hostname}@#{domain}"
 default['craftcake']['notify']['subject'] = "Minecraft Server Login"

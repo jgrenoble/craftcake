@@ -1,0 +1,21 @@
+#!/bin/bash
+
+filename='/var/minecraft/nohup.out'
+
+exec 4<$filename
+
+while read -u4 p ; do
+#    echo "operating on" $p
+    if echo $p | grep -q "joined"; then
+        #echo "found" $p
+        USERNAME=$(echo $p | awk '{ print $4 }');
+        USERNAMES+="$USERNAME has joined the server!\n"
+    fi
+done
+
+if [ ${#USERNAMES} -ge 5 ]; then
+    echo -e $USERNAMES | mail -s "Minecraft User Login" jesse.grenoble@gmail.com ;
+    echo $(echo $USERNAMES | wc -l) " user logins found, email sent."
+    cat /dev/null > $filename
+else echo "Nobody attempted to login"
+fi
