@@ -17,6 +17,12 @@ service 'crond' do
   action :start
 end
 
+#install sendmail
+package 'sendmail' do
+  package_name "sendmail"
+  action :install
+end
+
 # create the notifier script
 template "#{node[:craftcake][:directory]}/notify.sh" do
   source "notify.sh.erb"
