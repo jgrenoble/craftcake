@@ -33,6 +33,6 @@ end
 cron 'notify.sh' do
   minute '*/5'
   environment ({"PATH" => "/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin"})
-  command "#{node[:craftcake][:directory]}/notify.sh"
+  command "#{node[:craftcake][:directory]}/notify.sh &> /dev/null"
   user 'root'
 end
