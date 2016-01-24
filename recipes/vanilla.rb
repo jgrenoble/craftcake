@@ -33,18 +33,13 @@ cookbook_file "#{node[:craftcake][:directory]}/eula.txt" do
   mode '0755'
 end
 
-# add optional ops to the server config
-ruby_block "Set Server Operators" do
-    not_if { ::File.exists?("#{node[:craftcake][:directory]}/ops.json") }
-    block do
-      template "#{node[:craftcake][:directory]}/ops.json" do
-        source 'ops.json.erb'
-        mode '0755'
-        variables :ops_settings => node['craftcake']['ops']
-        action :create
-        notifies :restart, 'service[minecraft]', :delayed
-      end
-    end
+# add ops to the server config
+template "#{node[:craftcake][:directory]}/ops.json" do
+  source 'ops.json.erb'
+  mode '0755'
+  variables :ops_settings => node['craftcake']['ops']
+  action :create
+  notifies :restart, 'service[minecraft]', :delayed
 end
 
 # create the minecraft server script

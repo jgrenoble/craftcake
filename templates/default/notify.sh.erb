@@ -12,7 +12,7 @@ while read -u4 p ; do
 done
 
 if [ ${#USERNAMES} -ge 5 ]; then
-    echo -e $USERNAMES | mail -s "Minecraft User Login" jesse.grenoble@gmail.com ;
+    echo -e $USERNAMES | mail -s "Minecraft User Login" <%= @email %> ;
     echo $(echo $USERNAMES | wc -l) "user logins found, email sent."
     cat /dev/null > $FILENAME
 else echo "nobody attempted to login"
