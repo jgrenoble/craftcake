@@ -9,8 +9,7 @@ case $1 in
         echo "Starting $SERVICE_NAME ..."
         if [ -z "$PID" ]; then
             echo "pid does not exist, starting server..."
-            cd /var/minecraft
-            nohup java -Xmx512M -Xms128M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null &
+            cd /var/minecraft && nohup java -Xmx512M -Xms128M -jar $PATH_TO_JAR nogui /tmp 2>> /dev/null &
             echo "$SERVICE_NAME started ..."
             exit 0
         else
