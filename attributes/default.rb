@@ -21,6 +21,12 @@ default['craftcake']['notify']['log_file'] = "#{node['craftcake']['directory']}/
 
 # default mods for the server (you'll want to change this)
 default['craftcake']['ops'] = [
+   {
+    "uuid": "fb47781d-9568-48be-82bb-94413ffb68fc",
+    "name": "QuinnAugustyn",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
   {
     "uuid" => "120aaa19-a7fc-4c86-9712-7dfa3a4711b3",
     "name"  => "jezzegfunk",
