@@ -5,7 +5,7 @@
 # Copyright 2015, yellowfive.com
 #
 
-default['craftcake']['minecraft']['version'] = "1.10"
+default['craftcake']['minecraft']['version'] = "1.11"
 default['craftcake']['minecraft']['jar'] = "minecraft_server.jar"
 
 default['craftcake']['java']['version'] = "1.8.0"
