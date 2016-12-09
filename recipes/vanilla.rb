@@ -38,7 +38,7 @@ template "#{node[:craftcake][:directory]}/ops.json" do
   source 'ops.json.erb'
   mode '0755'
   variables :ops_settings => node['craftcake']['ops']
-  action :create
+  action :create_if_missing
   notifies :restart, 'service[minecraft]', :delayed
 end
 
