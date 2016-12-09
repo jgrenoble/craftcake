@@ -10,7 +10,7 @@ if platform?("centos", "redhat")
   include_recipe "craftcake::vanilla"
 
   # if notifier is turned on install and run it
-  if node[:craftcake][:notify_on_login] == "true"
+  if node["craftcake"]["notify_on_login"] == "true"
     include_recipe "craftcake::notifier"
   end
 

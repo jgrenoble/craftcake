@@ -14,8 +14,8 @@ default['craftcake']['directory'] = "/var/minecraft"
 
 # minecraft server login notifier settings
 default['craftcake']['notify_on_login'] = "true"
-default['craftcake']['notify']['to_address'] = "root@#{domain}"
-default['craftcake']['notify']['from_address'] = "#{hostname}@#{domain}"
+default['craftcake']['notify']['to_address'] = "root@#{node['domain']}"
+default['craftcake']['notify']['from_address'] = "#{node['hostname']}@#{node['domain']}"
 default['craftcake']['notify']['subject'] = "Minecraft Server Login"
 default['craftcake']['notify']['log_file'] = "#{node['craftcake']['directory']}/nohup.out"
 
